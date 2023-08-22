@@ -10,11 +10,10 @@ $font-Poppins: "Poppins", sans-serif;
 $font-Lilita: "Lilita One", sans-serif;
 
 #root {
-  background: rgb(44, 62, 80);
   background: linear-gradient(
-    90deg,
-    rgba(44, 62, 80, 1) 0%,
-    rgba(0, 0, 0, 1) 100%
+    45deg,
+    rgb(16, 18, 26) 0%,
+    rgb(28, 27, 27) 100%
   );
   color: #fff;
   min-height: 100vh;
@@ -44,14 +43,49 @@ header {
 }
 
 main {
+  width: clamp(300px, 90%, 500px);
+  padding: 4px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #f61e7f,  #9079f5, #f9638b, #5ff2ef);
+  background-position: 0vh;
+  transition: 0.3s linear;
+  animation: backgroundChange 18s linear forwards infinite;
+
+
+
+
+  @keyframes backgroundChange {
+    0% {
+      background-position: 100vh;
+    }
+
+    25% {
+      background-position: 200vh;
+    }
+    50% {
+      background-position: 300vh;
+    }
+
+    75% {
+      background-position: 400vh;
+    }
+
+    100% {
+      background-position: 500vh;
+    }
+  }
+
+
+
+  .wrapper {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
   padding: 1rem 1.5rem;
   border-radius: 5px;
-  color: #1b1a1a;
-  background: linear-gradient(60deg, rgb(188, 251, 199), #72d7f5);
-  width: clamp(300px, 90%, 500px);
+  color: #ffffff;
+  background: linear-gradient(60deg, #292a29, #1c1d1d);
+  }
 
 
 
@@ -107,6 +141,26 @@ main {
 
     input {
       width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      outline: none;
+      border-radius: 15px;
+      height: 6px;
+
+
+      &:active {
+        cursor: pointer;
+      }
+
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background:#59f7b5;
+      }
     }
   }
 
@@ -120,12 +174,45 @@ main {
     gap: 10px;
 
 
+    @media Screen and (max-width: 500px) {
+      grid-template-columns: auto;
+    }
+
+
     .pass-input {
       display: flex;
       align-items: center;
       font-weight: 500;
       font-size: 15px;
       gap: 5px;
+   
+
+      @media(hover:hover) {
+        & * {
+          cursor: pointer;
+        }
+      }
+
+      label {
+        user-select: none;
+      }
+
+
+
+      input {
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        transition: 0.3s linear;
+
+
+        &:checked {
+        border: 2px solid transparent;
+        background:#86ddf5;
+        }
+      }
     }
   }
 
@@ -146,21 +233,21 @@ main {
     outline: none;
     font-size: 1.3rem;
     font-family: $font-Lilita;
-    color: #fff;
-    background: rgb(74, 74, 74);
-    transition: 0.3s linear;
+    color: #fefefe;
+    background: linear-gradient(to left, rgb(252, 101, 101), #f156da);
+    transition: 0.2s linear;
 
 
     @media(hover:hover) {
       & {
         cursor: pointer;
       }
+      &:hover {
+        filter: brightness(85%);
+      }
     }
 
 
-    &:hover {
-      background: #262626;
-    }
   }
 
 }
